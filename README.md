@@ -85,10 +85,10 @@ The idea behind the normalizer is similar to what we have seen in the message tr
 When passing around messages in an event-driven application, we often do not want our messages to contain all details. For example, an event containing a “userID” may not need additional information about this particular user, because relevant information can always be retrieved using this userID. This approach is referred to as claim-check pattern: we split the message into a reference (“claim check”) and the related payload. We can then store the payload in an external storage and only need to pass references in our systems. For example, we may need to retrieve information about a user by referencing the userID. 
 
 ### Goal
-![Picture 7](./images/Picture 7.png)
+[Picture 7](images/Picture 7.png)
 
 ### Architecture Diagram
-![Picture 8](./images/Picture 8.png)
+[Picture 8](./images/Picture 8.png)
 
 **Note**: *“The sample code; software libraries; command line tools; proofs of concept; templates; or other related technology (including any of the foregoing that are provided by our personnel) is provided to you as AWS Content under the AWS Customer Agreement, or the relevant written agreement between you and AWS (whichever applies). You should not use this AWS Content in your production accounts, or on production or other critical data. You are responsible for testing, securing, and optimizing the AWS Content, such as sample code, as appropriate for production grade use based on your specific quality control practices and standards. Deploying AWS Content may incur AWS charges for creating or using AWS chargeable resources, such as running Amazon EC2 instances or using Amazon S3 storage.”*
 
