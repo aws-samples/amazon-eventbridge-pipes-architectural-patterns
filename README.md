@@ -58,37 +58,37 @@ need to write and maintain.
 The content filter pattern removes unwanted content from a message before forwarding it to a downstream system. 
 
 ### Goal
-![Picture 1](./images/Picture 1.png)
+![Picture1](./images/Picture1.png)
 
 ### Architecture Diagram
-![Picture 2](./images/Picture 2.png)
+![Picture2](./images/Picture2.png)
 
 ## Message Translator pattern
 In an event-driven architecture, event senders and receivers are independent from each other, and for that reason, the events they exchange may have different formats. To allow communication between different components, a translation of these events is needed, known as the Message Translator pattern. For example, an event contains an address, but the consumer expects coordinates.
 
 ### Goal
-![Picture 3](./images/Picture 3.png)
+![Picture3](./images/Picture3.png)
 
 ### Architecture Diagram
-![Picture 4](./images/Picture 4.png)
+![Picture4](./images/Picture4.png)
 
 ## Normalizer pattern
 The idea behind the normalizer is similar to what we have seen in the message translator, but now we have various source components, which all have different formats for events. The normalizer pattern then routes each event type through its specific message translator, so that our downstream systems process messages with a unified structure.
 
 ### Goal
-![Picture 5](./images/Picture 5.png)
+![Picture5](./images/Picture5.png)
 
 ### Architecture Diagram
-![Picture 6](./images/Picture 6.png)
+![Picture6](./images/Picture6.png)
 
 ## Claim Check pattern
 When passing around messages in an event-driven application, we often do not want our messages to contain all details. For example, an event containing a “userID” may not need additional information about this particular user, because relevant information can always be retrieved using this userID. This approach is referred to as claim-check pattern: we split the message into a reference (“claim check”) and the related payload. We can then store the payload in an external storage and only need to pass references in our systems. For example, we may need to retrieve information about a user by referencing the userID. 
 
 ### Goal
-[Picture 7](images/Picture 7.png)
+[Picture7](images/Picture7.png)
 
 ### Architecture Diagram
-[Picture 8](./images/Picture8.png)
+[Picture8](./images/Picture8.png)
 
 **Note**: *“The sample code; software libraries; command line tools; proofs of concept; templates; or other related technology (including any of the foregoing that are provided by our personnel) is provided to you as AWS Content under the AWS Customer Agreement, or the relevant written agreement between you and AWS (whichever applies). You should not use this AWS Content in your production accounts, or on production or other critical data. You are responsible for testing, securing, and optimizing the AWS Content, such as sample code, as appropriate for production grade use based on your specific quality control practices and standards. Deploying AWS Content may incur AWS charges for creating or using AWS chargeable resources, such as running Amazon EC2 instances or using Amazon S3 storage.”*
 
