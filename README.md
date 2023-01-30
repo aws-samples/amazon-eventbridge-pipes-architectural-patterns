@@ -58,37 +58,69 @@ need to write and maintain.
 The content filter pattern removes unwanted content from a message before forwarding it to a downstream system. 
 
 ### Goal
-![Picture1](./images/Picture1.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture1_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture1.png">
+  <img alt="Shows that events of type USER_CREATED are deleted, and events of type ORDER are modified to not contain the attributes user_name and birthday anymore." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture1.png">
+</picture>
 
 ### Architecture Diagram
-![Picture2](./images/Picture2.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture2_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture2.png">
+  <img alt="Architecture diagram which connects two Kinesis streams using a pipe with filter and input transformer." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture2.png">
+</picture>
 
 ## Message Translator pattern
 In an event-driven architecture, event senders and receivers are independent from each other, and for that reason, the events they exchange may have different formats. To allow communication between different components, a translation of these events is needed, known as the Message Translator pattern. For example, an event contains an address, but the consumer expects coordinates.
 
 ### Goal
-![Picture3](./images/Picture3.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture3_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture3.png">
+  <img alt="Shows an original event with an address attribute saying 1600, Pennsylvania Avenue NW, Washington, DC 20500, USA and a modified event with coordinates of this location." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture3.png">
+</picture>
 
 ### Architecture Diagram
-![Picture4](./images/Picture4.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture4_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture4.png">
+  <img alt="Architecture diagram which connects an SQS with AWS Step Functions using a pipe with an API destination enrichment." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture4.png">
+</picture>
 
 ## Normalizer pattern
 The idea behind the normalizer is similar to what we have seen in the message translator, but now we have various source components, which all have different formats for events. The normalizer pattern then routes each event type through its specific message translator, so that our downstream systems process messages with a unified structure.
 
 ### Goal
-![Picture5](./images/Picture5.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture5_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture5.png">
+  <img alt="Shows three original event with varying formats for the name attribute, and a resulting event with a unified structure for the name." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture5.png">
+</picture>
 
 ### Architecture Diagram
-![Picture6](./images/Picture6.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture6_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture6.png">
+  <img alt="Architecture diagram which connects an SQS with EventBridge, using a pipe that does enrichment via Step Functions. The Step Functions workflow first checks the type of an event and based on the result branches into state unifyA, unifyB or unifyC." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture6.png">
+</picture>
 
 ## Claim Check pattern
 When passing around messages in an event-driven application, we often do not want our messages to contain all details. For example, an event containing a “userID” may not need additional information about this particular user, because relevant information can always be retrieved using this userID. This approach is referred to as claim-check pattern: we split the message into a reference (“claim check”) and the related payload. We can then store the payload in an external storage and only need to pass references in our systems. For example, we may need to retrieve information about a user by referencing the userID. 
 
 ### Goal
-![Picture7](./images/Picture7.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture7_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture7.png">
+  <img alt="Shows an original event which only contains a userID and a resulting event with additional attributes." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture7.png">
+</picture>
 
 ### Architecture Diagram
-![Picture8](./images/Picture8.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture8_d.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture8.png">
+  <img alt="Architecture diagram which connects an arbitrary source and target with a pipe that does enrichment, either using API Gateway, EventBridge, Step Functions or Lambda." src="https://raw.githubusercontent.com/aws-samples/amazon-eventbridge-pipes-architectural-patterns/main/images/Picture8.png">
+</picture>
 
 **Note**: *“The sample code; software libraries; command line tools; proofs of concept; templates; or other related technology (including any of the foregoing that are provided by our personnel) is provided to you as AWS Content under the AWS Customer Agreement, or the relevant written agreement between you and AWS (whichever applies). You should not use this AWS Content in your production accounts, or on production or other critical data. You are responsible for testing, securing, and optimizing the AWS Content, such as sample code, as appropriate for production grade use based on your specific quality control practices and standards. Deploying AWS Content may incur AWS charges for creating or using AWS chargeable resources, such as running Amazon EC2 instances or using Amazon S3 storage.”*
 
