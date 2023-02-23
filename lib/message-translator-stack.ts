@@ -8,10 +8,6 @@ import * as logs from 'aws-cdk-lib/aws-logs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { NagSuppressions } from 'cdk-nag';
 
-
-// This example does not run out of the box. You need to:
-//  1. configure the endpoint for the API destination "enrichmentDestination". The example shows how to retrieve the endpoint URL from AWS Systems Manager Parameter Store
-//  2. configure the authorization for the connection. The example shows how to retrieve the secret from AWS Secrets Manager
 export class MessageTranslatorStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
