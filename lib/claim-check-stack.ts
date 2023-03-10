@@ -122,6 +122,7 @@ export class ClaimCheckStack extends cdk.Stack {
       tracingEnabled: true,
       logs: {
         destination: new logs.LogGroup(this, 'ClaimCheckTargetWorkflowLogGroup', {
+          logGroupName: '/aws/vendedlogs/states/ClaimCheckTargetWorkflowLogGroup',
           removalPolicy: cdk.RemovalPolicy.DESTROY,
         }),
         level: sfn.LogLevel.ALL,
